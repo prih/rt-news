@@ -1,17 +1,20 @@
 <div class="col-md-9">
-	<h4><a href="{{item.link}}" target="_blank">{{item.title}}</a></h4>
-	<div class="theme_meta">{{item.meta}}</div>
-	<div class="theme_anonse">{{item.preview}}</div>
+	<h4><a href="{{item.link}}" target="_blank" ng-bind-html="item.title"></a></h4>
+	<div class="theme_meta">
+		<span ng-bind="item.link | url:'hostname'"></span>,
+		<span ng-bind="item.ts | date:'M/d/yy HH:mm:ss'"></span>
+	</div>
+	<div class="theme_anonse" ng-bind-html="item.snippet"></div>
 </div>
 <div class="col-md-3">
-	<img ng-if="item.img" ng-src="{{item.img}}" alt="" class="theme_img img-rounded">
+	<img ng-if="item.pic" ng-src="{{item.pic}}" alt="" class="theme_img img-rounded">
 </div>
 <div class="clearfix"></div>
 <div class="col-md-12 theme_actions">
 	<div class="pull-left">
 		<a href="#">Подробнее</a>
 	</div>
-	<!-- <div class="pull-right">
+	<div class="pull-right">
 		<div class="checkbox theme_geek">
 			<label>
 				<input type="checkbox" ng-checked="item.geek"> Гиковская
@@ -22,5 +25,5 @@
 			<button type="button" class="btn btn-success btn-xs" ng-if="key">Сделать первой</button>
 			<button type="button" class="btn btn-danger btn-xs">Удалить</button>
 		</div>
-	</div> -->
+	</div>
 </div>

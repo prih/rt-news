@@ -1,12 +1,21 @@
-<section id="page_title" ng-controller="appThemesController">
+<section id="page_title">
 	<div class="container">
 		<div class="page-header">
 			<h1>Новости для Радио-Т <small>{{themes.title}}</small></h1>
 		</div>
 	</div>
 </section>
-<section id="themes_list" ng-controller="appThemesController">
-	<div class="container">
-		<div class="theme_box" ng-repeat="(key, item) in themes.items" ng-include="'js/views/theme_item.html'" ng-class="{'active': item.active}"></div>
+<section id="themes_list">
+	<div class="container" dnd-list="themes.items">
+		<div class="theme_box" 
+			ng-repeat="(key, item) in themes.items"
+			ng-include="'js/views/theme_item.html'"
+			ng-class="{'active': item.active}"
+			dnd-draggable="item"
+			dnd-moved="themes.items.splice($index, 1)"
+			dnd-effect-allowed="move"
+			dnd-selected="selected = item"
+		></div>
+		<div class="dndPlaceholder"></div>
 	</div>
 </section>

@@ -1,4 +1,4 @@
-angular.module('appModule', ['ngRoute', 'appNavModule', 'appThemesModule'])
+angular.module('appModule', ['ngRoute', 'dndLists', 'ngSanitize', 'appNavModule', 'appThemesModule'])
 
 .config(['$routeProvider', function($routeProvider){
 	$routeProvider
@@ -11,4 +11,6 @@ angular.module('appModule', ['ngRoute', 'appNavModule', 'appThemesModule'])
 	.otherwise({
 		redirectTo: '/themes/all'
 	});
-}]);
+}])
+
+.value('API_SERVER', 'http://master.radio-t.com:8778');

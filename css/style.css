@@ -7,6 +7,7 @@ body {
 	padding: 5px;
 	margin-bottom: 25px;
 	cursor: pointer;
+	border-radius: 5px;
 }
 .theme_box:hover{
 	background: #EBEBEB;
@@ -14,10 +15,19 @@ body {
 .theme_box.active{
 	background: #FBE2BD;
 }
+.theme_box.dndDraggingSource{
+	display: none;
+}
+#themes_list .dndPlaceholder{
+	background-color: #ddd;
+	min-height: 142px;
+	border-radius: 5px;
+	margin-bottom: 25px;
+}
 .theme_img{
 	display: inline-block;
-	max-width: 150px;
-	max-height: 150px;
+	max-width: 120px;
+	max-height: 120px;
 }
 .theme_meta{
 	color: silver;
