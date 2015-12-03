@@ -1,0 +1,12 @@
+<section id="page_title" ng-controller="appThemesController">
+	<div class="container">
+		<div class="page-header">
+			<h1>Новости для Радио-Т <small>{{themes.title}}</small></h1>
+		</div>
+	</div>
+</section>
+<section id="themes_list" ng-controller="appThemesController">
+	<div class="container">
+		<div class="theme_box" ng-repeat="(key, item) in themes.items" ng-include="'js/views/theme_item.html'" ng-class="{'active': item.active}"></div>
+	</div>
+</section>

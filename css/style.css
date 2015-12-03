@@ -1,0 +1,28 @@
+body {
+	padding-top: 70px;
+}
+
+.theme_box{
+	overflow: hidden;
+	padding: 5px;
+	margin-bottom: 25px;
+	cursor: pointer;
+}
+.theme_box:hover{
+	background: #EBEBEB;
+}
+.theme_box.active{
+	background: #FBE2BD;
+}
+.theme_img{
+	display: inline-block;
+	max-width: 150px;
+	max-height: 150px;
+}
+.theme_meta{
+	color: silver;
+}
+.theme_geek{
+	display: inline-block;
+	margin-right: 10px;
+}

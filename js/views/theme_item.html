@@ -1,0 +1,26 @@
+<div class="col-md-9">
+	<h4><a href="{{item.link}}" target="_blank">{{item.title}}</a></h4>
+	<div class="theme_meta">{{item.meta}}</div>
+	<div class="theme_anonse">{{item.preview}}</div>
+</div>
+<div class="col-md-3">
+	<img ng-if="item.img" ng-src="{{item.img}}" alt="" class="theme_img img-rounded">
+</div>
+<div class="clearfix"></div>
+<div class="col-md-12 theme_actions">
+	<div class="pull-left">
+		<a href="#">Подробнее</a>
+	</div>
+	<!-- <div class="pull-right">
+		<div class="checkbox theme_geek">
+			<label>
+				<input type="checkbox" ng-checked="item.geek"> Гиковская
+			</label>
+		</div>
+		<div class="btn-group" role="group" aria-label="...">
+			<button type="button" class="btn btn-info btn-xs" ng-if="!item.active">Сделать текущей</button>
+			<button type="button" class="btn btn-success btn-xs" ng-if="key">Сделать первой</button>
+			<button type="button" class="btn btn-danger btn-xs">Удалить</button>
+		</div>
+	</div> -->
+</div>
