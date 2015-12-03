@@ -7,8 +7,10 @@
 </section>
 <section id="themes_list">
 	<div class="container" dnd-list="themes.items">
+		<div class="text-center" ng-if="loading">Загружаю...</div>
 		<div class="theme_box" 
 			ng-repeat="(key, item) in themes.items"
+			ng-if="!geek_only || (geek_only && item.geek)"
 			ng-include="'js/views/theme_item.html'"
 			ng-class="{'active': item.active}"
 			dnd-draggable="item"
