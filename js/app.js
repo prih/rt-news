@@ -13,4 +13,4 @@ angular.module('appModule', ['ngRoute', 'dndLists', 'ngSanitize', 'appNavModule'
 	});
 }])
 
-.value('API_SERVER', 'http://master.radio-t.com:8778');
+.value('API_SERVER', 'https://master.radio-t.com:8778');
