@@ -9,19 +9,30 @@ angular.module('appThemesModule', ['ngRoute', 'appNavModule', 'appNewsModule'])
 		appNavService.active = value;
 	});
 
-	if($routeParams.type == 'geek') $scope.geek_only = true;
-
 	$scope.themes = {
-		title: 'Все темы',
-		items: []
+		title: '',
+		items: [],
+		loading: true
 	};
 
-	$scope.loading = true;
-
-	appNewsService.getNews(function(data){
-		$scope.themes.items = data;
-		$scope.loading = false;
-	});
+	switch($routeParams.type){
+		case 'all':
+			$scope.themes.title = 'Все темы';
+			$scope.geek_only = false;
+			appNewsService.getNews($scope.themes);
+			break;
+		case 'geek':
+			$scope.themes.title = 'Гиковские';
+			$scope.geek_only = true;
+			appNewsService.getNews($scope.themes);
+			break;
+		case 'del':
+			$scope.themes.title = 'Удаленные';
+			$scope.geek_only = false;
+			$scope.del_only = true;
+			appNewsService.getNewsDel($scope.themes);
+			break;
+	}
 }])
 
 .filter('url', function(){

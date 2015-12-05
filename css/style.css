@@ -8,6 +8,7 @@ body {
 	margin-bottom: 25px;
 	cursor: pointer;
 	border-radius: 5px;
+	border: 1px solid #eee;
 }
 .theme_box:hover{
 	background: #EBEBEB;
@@ -26,8 +27,7 @@ body {
 }
 .theme_img{
 	display: inline-block;
-	max-width: 120px;
-	max-height: 120px;
+	width: 120px;
 }
 .theme_meta{
 	color: silver;
