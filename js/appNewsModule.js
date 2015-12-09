@@ -10,25 +10,25 @@ angular.module('appNewsModule', ['ngRoute', 'appNavModule', 'appAPIModule'])
 	});
 
 	$scope.news = {
-		title: '',
+		type: $routeParams.type,
 		items: [],
 		loading: true
 	};
 
+	$scope.geek_only = false;
+	$scope.del_only = false;
+
+	// $scope.is_admin = true;
+
 	switch($routeParams.type){
 		case 'all':
-			$scope.news.title = 'Все темы';
-			$scope.geek_only = false;
 			appAPIService.getNews($scope.news);
 			break;
 		case 'geek':
-			$scope.news.title = 'Гиковские';
 			$scope.geek_only = true;
 			appAPIService.getNews($scope.news);
 			break;
 		case 'del':
-			$scope.news.title = 'Удаленные';
-			$scope.geek_only = false;
 			$scope.del_only = true;
 			appAPIService.getNewsDel($scope.news);
 			break;

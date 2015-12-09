@@ -1,12 +1,16 @@
 <section id="page_title">
 	<div class="container">
 		<div class="page-header">
-			<h1>Новости для Радио-Т <small>{{news.title}}</small></h1>
+			<h1>Новости для Радио-Т 
+				<small ng-if="news.type == 'all'">Все новости</small>
+				<small ng-if="news.type == 'geek'">Гиковские</small>
+				<small ng-if="news.type == 'del'">Удаленные</small>
+			</h1>
 		</div>
 	</div>
 </section>
 <section id="themes_list">
-	<div class="container" dnd-list="news.items">
+	<div class="container" dnd-list="news.items" ng-if="is_admin">
 		<div class="text-center" ng-if="news.loading">Загружаю...</div>
 		<div class="theme_box" 
 			ng-repeat="(key, item) in news.items"
@@ -19,5 +23,15 @@
 			dnd-selected="selected = item"
 		></div>
 		<div class="dndPlaceholder"></div>
+	</div>
+	
+	<div class="container" ng-if="!is_admin">
+		<div class="text-center" ng-if="news.loading">Загружаю...</div>
+		<div class="theme_box" 
+			ng-repeat="(key, item) in news.items"
+			ng-if="!geek_only || (geek_only && item.geek)"
+			ng-include="'js/views/news_item.html'"
+			ng-class="{'active': item.active}"
+		></div>
 	</div>
 </section>

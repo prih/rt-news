@@ -10,4 +10,5 @@ angular.module('appNavModule', [])
 
 .controller('appNavController', ['$scope', 'appNavService', function($scope, appNavService){
 	$scope.nav = appNavService;
+	$scope.is_admin = false;
 }]);
