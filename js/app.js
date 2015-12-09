@@ -2,20 +2,19 @@ angular.module('appModule', [
 	'ngRoute',
 	'dndLists',
 	'ngSanitize',
-	'appConfigModule',
 	'appNavModule',
-	'appThemesModule'
+	'appNewsModule'
 ])
 
 .config(['$routeProvider', function($routeProvider){
 	$routeProvider
 
-	.when('/themes/:type', {
-		templateUrl: 'js/views/themes.html',
-		controller: 'appThemesController'
+	.when('/news/:type', {
+		templateUrl: 'js/views/news.html',
+		controller: 'appNewsController'
 	})
 
 	.otherwise({
-		redirectTo: '/themes/all'
+		redirectTo: '/news/all'
 	});
 }]);

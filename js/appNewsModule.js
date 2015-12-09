@@ -1,47 +1,45 @@
-angular.module('appNewsModule', [])
+angular.module('appNewsModule', ['ngRoute', 'appNavModule', 'appAPIModule'])
 
-.factory('appNewsService', ['API_SERVER', '$http', '$cacheFactory', 
-function(API_SERVER, $http, $cacheFactory){
-	var _cache = $cacheFactory('_cache');
+.controller('appNewsController', [
+	'$scope', '$routeParams', 'appNavService', 'appAPIService',
+	function($scope, $routeParams, appNavService, appAPIService){
+	
+	$scope.nav_type = $routeParams.type;
+	$scope.$watch('nav_type', function(value){
+		appNavService.active = value;
+	});
 
-	return {
-		getNews: function(themes){
-			themes.loading = true;
-
-			var data = null;
-
-			if(data = _cache.get('all_news')){
-				themes.items = data;
-				themes.loading = false;
-				return;
-			}
-
-			$http.get(API_SERVER+'/api/v1/news')
-			.then(function(res){
-				_cache.put('all_news', res.data);
-
-				themes.items = res.data;
-				themes.loading = false;
-			});
-		},
-		getNewsDel: function(themes){
-			themes.loading = true;
-
-			var data = null;
-
-			if(data = _cache.get('del_news')){
-				themes.items = data;
-				themes.loading = false;
-				return;
-			}
-
-			$http.get(API_SERVER+'/api/v1/news/del')
-			.then(function(res){
-				_cache.put('del_news', res.data);
-
-				themes.items = res.data;
-				themes.loading = false;
-			});
-		}
+	$scope.news = {
+		title: '',
+		items: [],
+		loading: true
 	};
+
+	switch($routeParams.type){
+		case 'all':
+			$scope.news.title = 'Все темы';
+			$scope.geek_only = false;
+			appAPIService.getNews($scope.news);
+			break;
+		case 'geek':
+			$scope.news.title = 'Гиковские';
+			$scope.geek_only = true;
+			appAPIService.getNews($scope.news);
+			break;
+		case 'del':
+			$scope.news.title = 'Удаленные';
+			$scope.geek_only = false;
+			$scope.del_only = true;
+			appAPIService.getNewsDel($scope.news);
+			break;
+	}
 }])
+
+.filter('url', function(){
+	var a = document.createElement('a');
+
+	return function(input, key){
+		a.href = input;
+		return a[key];
+	};
+});
