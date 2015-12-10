@@ -1,8 +1,8 @@
-angular.module('appNewsModule', ['ngRoute', 'appNavModule', 'appAPIModule'])
+angular.module('appNewsModule', ['ngRoute', 'appNavModule', 'appAPIModule', 'appLoginModule'])
 
 .controller('appNewsController', [
-	'$scope', '$routeParams', 'appNavService', 'appAPIService',
-	function($scope, $routeParams, appNavService, appAPIService){
+	'$scope', '$routeParams', 'appNavService', 'appAPIService', 'appLoginService',
+	function($scope, $routeParams, appNavService, appAPIService, appLoginService){
 	
 	$scope.nav_type = $routeParams.type;
 	$scope.$watch('nav_type', function(value){
@@ -18,7 +18,7 @@ angular.module('appNewsModule', ['ngRoute', 'appNavModule', 'appAPIModule'])
 	$scope.geek_only = false;
 	$scope.del_only = false;
 
-	// $scope.is_admin = true;
+	$scope.login_state = appLoginService;
 
 	switch($routeParams.type){
 		case 'all':

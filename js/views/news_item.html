@@ -14,7 +14,7 @@
 	<div class="pull-left">
 		<a href="#" ng-click="openNewsModal($event, key)">Подробнее</a>
 	</div>
-	<div class="pull-right" ng-if="is_admin">
+	<div class="pull-right" ng-if="login_state.is_admin">
 		<div class="checkbox theme_geek">
 			<label>
 				<input type="checkbox" ng-checked="item.geek"> Гиковская

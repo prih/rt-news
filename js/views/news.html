@@ -10,7 +10,7 @@
 	</div>
 </section>
 <section id="themes_list">
-	<div class="container" dnd-list="news.items" ng-if="is_admin">
+	<div class="container" dnd-list="news.items" ng-if="login_state.is_admin">
 		<div class="text-center" ng-if="news.loading">Загружаю...</div>
 		<div class="theme_box" 
 			ng-repeat="(key, item) in news.items"
@@ -25,7 +25,7 @@
 		<div class="dndPlaceholder"></div>
 	</div>
 	
-	<div class="container" ng-if="!is_admin">
+	<div class="container" ng-if="!login_state.is_admin">
 		<div class="text-center" ng-if="news.loading">Загружаю...</div>
 		<div class="theme_box" 
 			ng-repeat="(key, item) in news.items"

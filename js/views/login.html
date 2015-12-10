@@ -1,0 +1,27 @@
+<section id="page_login">
+	<div class="container">
+		<div class="page-header">
+			<h1>Вход</h1>
+		</div>
+	</div>
+</section>
+<section>
+	<div class="container">
+		<form class="col-centered login_form" ng-submit="loginSubmit()">
+			<div class="form-group">
+				<label for="user_login">Логин</label>
+				<input type="text" class="form-control" id="user_login" ng-model="user.login">
+			</div>
+			<div class="form-group">
+				<label for="user_pass">Пароль</label>
+				<input type="password" class="form-control" id="user_pass" ng-model="user.password">
+			</div>
+			<div class="checkbox">
+				<label>
+					<input type="checkbox" ng-model="user.save"> Сохранить
+				</label>
+			</div>
+			<button type="submit" class="btn btn-default">Войти</button>
+		</form>
+	</div>
+</section>

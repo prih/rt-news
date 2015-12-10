@@ -1,4 +1,4 @@
-angular.module('appNavModule', [])
+angular.module('appNavModule', ['appLoginModule'])
 
 .factory('appNavService', [function(){
 	var nav = {
@@ -9,6 +9,9 @@ angular.module('appNavModule', [])
 	return nav;
 }])
 
-.controller('appNavController', ['$scope', 'appNavService', function($scope, appNavService){
-	$scope.nav = appNavService;
-}]);
+.controller('appNavController', ['$scope', 'appNavService', 'appLoginService',
+	function($scope, appNavService, appLoginService){
+		$scope.nav = appNavService;
+		$scope.login_state = appLoginService;
+	}
+]);

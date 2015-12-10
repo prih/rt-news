@@ -18,11 +18,12 @@
 			<li ng-class="{'active': nav.active == 'del'}"><a href="#/news/del">Удаленные</a></li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li ng-if="nav.is_admin"><a href="#">Добавить новость</a></li>
-			<li ng-if="nav.is_admin"><a href="#">Управление фидами</a></li>
-			<li ng-if="nav.is_admin"><a href="#">Обновить базу</a></li>
-			<li ng-if="nav.is_admin"><a href="#">Выход</a></li>
-			<li ng-if="!nav.is_admin"><a href="#login">Вход</a></li>
+			<li ng-if="login_state.is_admin"><a href="#">Добавить новость</a></li>
+			<li ng-if="login_state.is_admin"><a href="#">Управление фидами</a></li>
+			<li ng-if="login_state.is_admin"><a href="#">Обновить базу</a></li>
+			<li ng-if="login_state.is_admin"><a href="#logout">Выход</a></li>
+			<li ng-class="{'active': nav.active == 'login'}"
+				ng-if="!login_state.is_admin"><a href="#login">Вход</a></li>
 		</ul>
 	</div><!-- /.navbar-collapse -->
 </div><!-- /.container-fluid -->

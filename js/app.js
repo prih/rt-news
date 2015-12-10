@@ -3,7 +3,8 @@ angular.module('appModule', [
 	'dndLists',
 	'ngSanitize',
 	'appNavModule',
-	'appNewsModule'
+	'appNewsModule',
+	'appLoginModule'
 ])
 
 .config(['$routeProvider', function($routeProvider){
@@ -12,6 +13,16 @@ angular.module('appModule', [
 	.when('/news/:type', {
 		templateUrl: 'js/views/news.html',
 		controller: 'appNewsController'
+	})
+
+	.when('/login', {
+		controller: 'appLoginController',
+		templateUrl: 'js/views/login.html',
+	})
+
+	.when('/logout', {
+		template: '',
+		controller: 'appLogoutController'
 	})
 
 	.otherwise({
