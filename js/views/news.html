@@ -34,4 +34,8 @@
 			ng-class="{'active': item.active}"
 		></div>
 	</div>
+
+	<modal title="modal.title" visible="modal.visible">
+		<div ng-bind-html="modal.body"></div>
+	</modal>
 </section>

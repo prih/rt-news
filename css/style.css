@@ -36,3 +36,8 @@ body {
 	display: inline-block;
 	margin-right: 10px;
 }
+
+#news_modal .modal-body img {
+	display: inline-block;
+	max-width: 100%;
+}
