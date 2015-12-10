@@ -41,8 +41,11 @@ angular.module('appNewsModule', ['ngRoute', 'appNavModule', 'appAPIModule'])
 	};
 
 	$scope.openNewsModal = function($event, item_key){
+		var content = $($scope.news.items[item_key].content);
+		content.find('*').removeAttr('class').removeAttr('style');
+
 		$scope.modal.title = $scope.news.items[item_key].title;
-		$scope.modal.body = $scope.news.items[item_key].content;
+		$scope.modal.body = content.html();
 		$scope.modal.visible = true;
 
 		$event.preventDefault();
