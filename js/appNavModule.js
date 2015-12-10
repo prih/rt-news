@@ -2,7 +2,8 @@ angular.module('appNavModule', [])
 
 .factory('appNavService', [function(){
 	var nav = {
-		active: null
+		active: null,
+		is_admin: false
 	};
 
 	return nav;
@@ -10,5 +11,4 @@ angular.module('appNavModule', [])
 
 .controller('appNavController', ['$scope', 'appNavService', function($scope, appNavService){
 	$scope.nav = appNavService;
-	$scope.is_admin = false;
 }]);
