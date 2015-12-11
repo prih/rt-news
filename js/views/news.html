@@ -10,7 +10,10 @@
 	</div>
 </section>
 <section id="themes_list">
-	<div class="container" dnd-list="news.items" ng-if="login_state.is_admin">
+	<div class="container" 
+		dnd-list="news.items"
+		dnd-drop="dragDrop(index, item)"
+	>
 		<div class="text-center" ng-if="news.loading">Загружаю...</div>
 		<div class="theme_box" 
 			ng-repeat="(key, item) in news.items"
@@ -18,21 +21,12 @@
 			ng-include="'js/views/news_item.html'"
 			ng-class="{'active': item.active}"
 			dnd-draggable="item"
-			dnd-moved="news.items.splice($index, 1)"
+			dnd-moved="dragMoved($index)"
+			dnd-dragstart="dragStart($index)"
 			dnd-effect-allowed="move"
-			dnd-selected="selected = item"
+			dnd-disable-if="!login_state.is_admin"
 		></div>
 		<div class="dndPlaceholder"></div>
-	</div>
-	
-	<div class="container" ng-if="!login_state.is_admin">
-		<div class="text-center" ng-if="news.loading">Загружаю...</div>
-		<div class="theme_box" 
-			ng-repeat="(key, item) in news.items"
-			ng-if="!geek_only || (geek_only && item.geek)"
-			ng-include="'js/views/news_item.html'"
-			ng-class="{'active': item.active}"
-		></div>
 	</div>
 
 	<modal title="modal.title" visible="modal.visible">

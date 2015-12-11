@@ -40,6 +40,28 @@ angular.module('appNewsModule', ['ngRoute', 'appNavModule', 'appAPIModule', 'app
 		body: ''
 	};
 
+	var start_index = 0;
+
+	$scope.dragStart = function($index){
+		start_index = $index;
+	};
+	$scope.dragDrop = function($index, item){
+		var offset = 0;
+		if($index > start_index){
+			$index--;
+			if($index != start_index) offset = start_index - $index;
+		} else {
+			offset = start_index - $index;
+		}
+
+		console.log(item.position, offset)
+
+		return item;
+	};
+	$scope.dragMoved = function($index){
+		$scope.news.items.splice($index, 1);
+	};
+
 	$scope.openNewsModal = function($event, item_key){
 		var content = $($scope.news.items[item_key].content);
 		content.find('*').removeAttr('class').removeAttr('style');
